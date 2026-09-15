@@ -11,14 +11,15 @@ class ExpansionController extends Controller
 {
     public function index()
     {
-        $expansiones = Expansion::all();
+        // Carga ansiosa (eager loading) de las relaciones definidas en el modelo
+        $expansiones = Expansion::with(['juego', 'idioma'])->get();
         return view('expansiones.index', compact('expansiones'));
     }
 
-    public function show($id)
+    public function show(Expansion $expansion)
     {
-        $expansion = Expansion::find($id);
-        if (!$expansion) abort(404, 'Expansión no encontrada');
+        // Inyección de modelo directa de Eloquent
+        $expansion->load(['juego', 'idioma']);
         return view('expansiones.show', compact('expansion'));
     }
 
@@ -35,9 +36,9 @@ class ExpansionController extends Controller
         return redirect()->route('expansiones.index')->with('success', '¡Expansión guardada con éxito!');
     }
 
-    public function destroy($id)
+    public function destroy(Expansion $expansion)
     {
-        Expansion::destroy($id);
+        $expansion->delete();
         return redirect()->route('expansiones.index')->with('success', '¡Expansión eliminada correctamente!');
     }
 }

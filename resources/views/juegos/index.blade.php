@@ -27,7 +27,7 @@
             <td>{{ $juego->id }}</td>
             <td>{{ $juego->titulo }}</td>
             <td>{{ $juego->anio }}</td>
-            <td>{{ $juego->idioma }}</td>
+            <td>{{ $juego->idioma->nombre ?? 'N/A' }}</td>
             <td>
                 <a href="{{ route('juegos.show', $juego->id) }}">Ver Detalle</a>
                 <form action="{{ route('juegos.destroy', $juego->id) }}" method="POST" style="display:inline;">

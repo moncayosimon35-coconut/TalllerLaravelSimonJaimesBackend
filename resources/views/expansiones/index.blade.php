@@ -8,7 +8,8 @@
     <nav>
         <a href="{{ route('idiomas.index') }}">Idiomas</a> |
         <a href="{{ route('juegos.index') }}">Juegos</a> |
-        <a href="{{ route('expansiones.index') }}">Expansiones</a>
+        <a href="{{ route('expansiones.index') }}">Expansiones</a> |
+        <a href="{{ route('buscar') }}">Búsqueda Avanzada</a>
     </nav>
     <hr>
     <h2>Listado de Expansiones</h2>
@@ -26,8 +27,8 @@
         <tr>
             <td>{{ $exp->id }}</td>
             <td>{{ $exp->titulo }}</td>
-            <td>{{ $exp->juego_base }}</td>
-            <td>{{ $exp->idioma }}</td>
+            <td>{{ $exp->juego->titulo ?? 'N/A' }}</td>
+            <td>{{ $exp->idioma->nombre ?? 'N/A' }}</td>
             <td>
                 <a href="{{ route('expansiones.show', $exp->id) }}">Ver Detalle</a>
                 <form action="{{ route('expansiones.destroy', $exp->id) }}" method="POST" style="display:inline;">

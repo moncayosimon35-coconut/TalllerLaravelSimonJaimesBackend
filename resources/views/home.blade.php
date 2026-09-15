@@ -7,9 +7,10 @@
 <body>
     <h1>Bienvenido a la Gestión de Ludoteca</h1>
     <nav>
-        <a href="{{ route('idiomas.index') }}">Gestionar Idiomas</a> |
-        <a href="{{ route('juegos.index') }}">Gestionar Juegos</a> |
-        <a href="{{ route('expansiones.index') }}">Gestionar Expansiones</a>
+        <a href="{{ route('idiomas.index') }}">Idiomas</a> |
+    <a href="{{ route('juegos.index') }}">Juegos</a> |
+    <a href="{{ route('expansiones.index') }}">Expansiones</a> |
+    <a href="{{ route('buscar') }}"><strong>Búsqueda Avanzada</strong></a>
     </nav>
 </body>
 </html>
